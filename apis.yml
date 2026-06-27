@@ -38,7 +38,7 @@ apis:
       - url: https://stores.cabelas.com
         type: Store Locator
       - url: https://www.cabelas.com/shop/en/customer-service
-        type: Customer Service
+        type: Support
     description: >-
       Cabela's offers an online storefront for hunting, fishing, camping,
       and outdoor gear, along with store locator, customer service, and
@@ -50,7 +50,7 @@ common:
     url: https://www.basspro.com
   - type: Store Locator
     url: https://stores.cabelas.com
-  - type: Customer Service
+  - type: Support
     url: https://www.cabelas.com/shop/en/customer-service
   - type: PrivacyPolicy
     url: https://www.cabelas.com/shop/en/privacy-policy
