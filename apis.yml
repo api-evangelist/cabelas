@@ -44,6 +44,8 @@ apis:
       and outdoor gear, along with store locator, customer service, and
       loyalty program pages. No public developer API is currently documented.
 common:
+  - type: DomainSecurity
+    url: security/cabelas-domain-security.yml
   - type: Website
     url: https://www.cabelas.com
   - type: Parent Company
