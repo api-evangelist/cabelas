@@ -1,0 +1,225 @@
+generated: '2026-09-05'
+method: probed
+source: >-
+  Live probes of the named /.well-known/ path list plus /llms.txt, /robots.txt and the
+  REST spec roots on every host this record knows: www.cabelas.com, cabelas.com,
+  help.cabelas.com, stores.cabelas.com and www.cabelas.ca. No apis[].baseURL and no
+  OpenAPI servers[] host exists for this provider, so the registrable domain, the help
+  centre, the Yext-hosted store locator and the Canadian storefront are the full host set.
+hosts:
+  - host: https://www.cabelas.com
+    note: >-
+      Akamai edge. Answers real content only to a full browser header set and rate-limits
+      hard after a handful of requests; every status below was read inside a window in
+      which the same client got HTTP 200 with the real robots.txt, so these are genuine
+      application 404s from the Next.js app router, not a challenge page.
+    documents:
+      - path: /robots.txt
+        status: 200
+        note: >-
+          Real robots.txt. Allows OAI-SearchBot, PerplexityBot, ChatGPT-User, YouBot,
+          PhindBot, ExaBot, xai-bot and FirecrawlAgent (crawl-delay 10) while disallowing
+          GPTBot and CCBot. Names one sitemap, the legacy WebSphere Commerce
+          sitemap_10651.xml.gz. No API or developer path is referenced.
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+      - path: /llms.txt
+        status: 404
+      - path: /openapi.json
+        status: 404
+      - path: /swagger.json
+        status: 404
+      - path: /api-docs
+        status: 404
+      - path: /sitemap.xml
+        status: 404
+  - host: https://help.cabelas.com
+    note: >-
+      Cabela's public help centre, served from CloudFront and built on the Shelf.io
+      knowledge-base platform (the rendered pages carry a shelf.io footer credit). It is
+      the one host in this record that publishes a real machine-readable document.
+    documents:
+      - path: /llms.txt
+        status: 200
+        content_type: text/markdown; charset=utf-8
+        file: ../llms/cabelas-llms.txt
+        note: >-
+          REAL DOCUMENT. 27,573 bytes of llms.txt-format markdown titled "# Cabela's",
+          indexing 9 help sections and roughly 140 FAQ articles, every link on
+          help.cabelas.com. This is a support-content index, not an API contract.
+      - path: /robots.txt
+        status: 200
+        note: >-
+          Carries a Content Signals declaration — `Content-signal: search=yes,
+          ai-input=yes, ai-train=no` — and then names bots individually: Claude-SearchBot,
+          Claude-User, OAI-SearchBot, ChatGPT-User, PerplexityBot and Perplexity-User are
+          allowed; ClaudeBot, Anthropic-AI, Claude-Web, GPTBot, Google-Extended, CCBot and
+          Cohere-ai are disallowed. A deliberate serve-at-inference / refuse-for-training
+          posture, consistent with the llms.txt above.
+      - path: /.well-known/security.txt
+        status: 200
+        note: >-
+          NOT A DOCUMENT. 200 returning the Next.js SPA shell (105 KB of text/html) — this
+          host answers 200 with the same HTML for every unmatched path. Treated as a miss.
+      - path: /.well-known/agent-card.json
+        status: 200
+        note: NOT A DOCUMENT — same SPA catch-all HTML shell. Treated as a miss.
+      - path: /.well-known/agent.json
+        status: 200
+        note: NOT A DOCUMENT — same SPA catch-all HTML shell. Treated as a miss.
+      - path: /.well-known/api-catalog
+        status: 200
+        note: NOT A DOCUMENT — same SPA catch-all HTML shell. Treated as a miss.
+      - path: /.well-known/openid-configuration
+        status: 200
+        note: NOT A DOCUMENT — same SPA catch-all HTML shell. Treated as a miss.
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        note: NOT A DOCUMENT — same SPA catch-all HTML shell. Treated as a miss.
+      - path: /.well-known/ai-plugin.json
+        status: 200
+        note: NOT A DOCUMENT — same SPA catch-all HTML shell. Treated as a miss.
+      - path: /openapi.json
+        status: 200
+        note: NOT A DOCUMENT — same SPA catch-all HTML shell. Treated as a miss.
+      - path: /llms-full.txt
+        status: 200
+        note: NOT A DOCUMENT — same SPA catch-all HTML shell. Treated as a miss.
+  - host: https://stores.cabelas.com
+    note: Cabela's store locator, published on the Yext Pages platform behind Cloudflare.
+    documents:
+      - path: /robots.txt
+        status: 200
+        note: Real robots.txt; disallows /search.html and /index.html, names a sitemap.
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /openapi.json
+        status: 404
+  - host: https://cabelas.com
+    note: Apex domain, same Akamai edge as www. Probed while the edge was serving 403.
+    documents:
+      - path: /.well-known/security.txt
+        status: 403
+      - path: /.well-known/agent-card.json
+        status: 403
+      - path: /openapi.json
+        status: 403
+  - host: https://www.cabelas.ca
+    note: Canadian storefront, separate Akamai property. Edge returned Access Denied.
+    documents:
+      - path: /.well-known/security.txt
+        status: 403
+      - path: /.well-known/agent-card.json
+        status: 403
+      - path: /openapi.json
+        status: 403
+subdomains_absent:
+  note: >-
+    None of the conventional developer-surface hostnames resolve in DNS at all — not
+    NXDOMAIN-behind-a-CDN, simply no record. This is the clearest single signal that
+    Cabela's runs no developer program.
+  checked:
+    - api.cabelas.com
+    - developer.cabelas.com
+    - dev.cabelas.com
+    - apis.cabelas.com
+    - status.cabelas.com
+    - trust.cabelas.com
+    - cabelas.custhelp.com
+findings:
+  agent_card: >-
+    NONE. /.well-known/agent-card.json and the legacy /.well-known/agent.json were probed
+    on all five hosts. www.cabelas.com and stores.cabelas.com returned genuine 404s;
+    help.cabelas.com returned the SPA catch-all HTML shell, which is not a card; the apex
+    and Canadian hosts were behind an Akamai 403. Nothing was written to a2a/.
+  well_known_pointer: >-
+    NOT EMITTED. No probed path returned a 200 carrying a real /.well-known/ document on
+    any host, so no WellKnown and no SecurityTxt pointer is wired into apis.yml. The one
+    real machine-readable document found, help.cabelas.com/llms.txt, is not a
+    /.well-known/ resource and is pointed at with type LLMsTxt instead.
+pointer_verification:
+  checked: '2026-09-05'
+  note: >-
+    Every apis.yml common[] and properties[] pointer was fetched on 2026-09-05 with a full
+    browser header set. www.cabelas.com sits behind an Akamai bot-management policy that
+    returns HTTP 403 with a "Site Maintenance" interstitial to non-allowlisted clients —
+    including to two independent egress paths — but the host is demonstrably LIVE (the same
+    client received HTTP 200 with the real robots.txt and 200 KB app-router 404 pages
+    inside an earlier window). Per the pipeline contract an ordinary edge bot policy is not
+    a dead pointer, so no pointer was removed.
+  pointers:
+    - type: Website
+      url: https://www.cabelas.com
+      status: 403
+      verdict: live-bot-challenged
+    - type: Store Locator
+      url: https://stores.cabelas.com
+      status: 200
+      verdict: live
+    - type: Support
+      url: https://help.cabelas.com
+      status: 200
+      verdict: live
+      change: >-
+        REPOINTED. Was https://www.cabelas.com/shop/en/customer-service, a legacy
+        WebSphere Commerce /shop/en/ path superseded by the current help centre. Replaced
+        with the help-centre root, which returns HTTP 200 with real content and is the
+        surface Cabela's own FAQ articles link to.
+    - type: PrivacyPolicy
+      url: https://www.cabelas.com/shop/en/privacy-policy
+      status: 403
+      verdict: unverified
+      finding: >-
+        MIGRATION LEAD, not acted on. Cabela's own help-centre article
+        "What is Cabela's Privacy/Security Policy?" links instead to
+        https://www.cabelas.com/shop/en/privacy-policy-summary-bass-pro-shops, and search
+        engines index https://www.cabelas.com/b/privacy-policy-summary-cabelas under the
+        title "Privacy Policy Summary | Cabela's" — the site has moved to a /b/ URL shape.
+        The current pointer could not be confirmed dead and neither candidate could be
+        confirmed live, so it was left in place rather than swapped one unverified URL for
+        another. Re-probe from an allowlisted client and repoint.
+    - type: TermsOfService
+      url: https://www.cabelas.com/shop/en/terms-and-conditions
+      status: 403
+      verdict: unverified
+      finding: >-
+        Same /shop/en/ legacy path shape and same migration lead as PrivacyPolicy. No
+        first-party replacement URL for site terms was found (the indexed
+        /b/club-terms-conditions page covers the CLUB Mastercard programme, not site
+        terms), so the pointer was left unchanged.
+    - type: Parent Company
+      url: https://www.basspro.com
+      status: 403
+      verdict: live-bot-challenged
+    - type: DomainSecurity
+      url: security/cabelas-domain-security.yml
+      status: local
+      verdict: live
+    - type: LLMsTxt
+      url: llms/cabelas-llms.txt
+      status: local
+      verdict: live
+      change: ADDED — verbatim capture of https://help.cabelas.com/llms.txt (HTTP 200).
+agent_differential_note: >-
+  Worth flagging for the agent-commercialization layer: www.cabelas.com/robots.txt
+  explicitly ALLOWS OAI-SearchBot, PerplexityBot, ChatGPT-User, YouBot, PhindBot, ExaBot,
+  xai-bot and FirecrawlAgent, yet the Akamai edge in front of it answers 403 to any client
+  not on its own allowlist. The stated policy and the deployed behaviour do not agree. The
+  help centre is the opposite and coherent: its robots.txt carries an explicit
+  Content-signal declaration (search=yes, ai-input=yes, ai-train=no), allows the
+  inference-time bots by name, disallows the training crawlers, and backs that up by
+  actually serving a 27 KB llms.txt to anonymous clients.

@@ -3,11 +3,17 @@ specificationVersion: '0.1'
 schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
 provider: Cabela's
 providerId: cabelas
+generated: '2026-09-05'
+method: searched
+source: >-
+  Searched Cabela's own surfaces for a developer/API pricing page on 2026-09-05:
+  help.cabelas.com (the provider's public help centre, whose llms.txt indexes all ~140
+  published FAQ articles — none concerns an API, a developer plan or API pricing),
+  www.cabelas.com/robots.txt (no developer or pricing path), and DNS for
+  api./developer./dev./apis.cabelas.com (no records exist). No API plans page was found
+  because Cabela's publishes no API.
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-04'
+modified: '2026-09-05'
 tags:
   - Retail
   - Outdoor
@@ -16,131 +22,45 @@ tags:
   - Camping
   - E-Commerce
   - Company
-description: Machine-readable plans and pricing scaffold for this API provider. Conforms to the API Commons
-  Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
-plans:
-  - id: cabelas-free
-    name: Free
-    type: freemium
-    description: Free entry tier for the Cabela's API surface. Intended for evaluation, prototyping, and
-      low-volume integrations. Real limits and pricing must be reconciled with the provider's published
-      plan documentation.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota across all included endpoints
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 1000
-        timeFrame: month
-        geo: global
-        domains: []
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the free tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 10
-        timeFrame: minute
-        geo: global
-        domains: []
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-    elements:
-      - name: Public Documentation
-      - name: Community Support
-      - name: Sandbox Access
-      - name: Cabela's
-  - id: cabelas-pro
-    name: Professional
-    type: paid
-    description: Production tier for Cabela's. Provides higher quotas, priority support, and access to
-      the broader API portfolio. Pricing placeholder; align with the provider's pricing page.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 100000
-        timeFrame: month
-        geo: global
-        domains: []
-        unit: 1
-        price: TBD
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the professional tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 100
-        timeFrame: minute
-        geo: global
-        domains: []
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Overage
-        description: Per-request price after monthly quota is exceeded
-        name: overage
-        type: metered
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: global
-        domains: []
-        unit: 1000
-        price: TBD
-        userMultiplied: false
-    elements:
-      - name: All Production Endpoints
-      - name: Email Support
-      - name: SLA Targets
-      - name: Webhook Subscriptions
-      - name: Cabela's
-  - id: cabelas-enterprise
-    name: Enterprise
-    type: enterprise
-    description: Custom-negotiated tier for Cabela's. Includes dedicated capacity, contractual SLAs, security
-      review, data residency options, and named technical account management.
-    entries:
-      - label: API Requests
-        description: Negotiated request volume; -1 indicates uncapped subject to fair use
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: configurable
-        domains: []
-        unit: 1
-        price: custom
-        userMultiplied: false
-      - label: Rate Limit
-        description: Negotiated burst and steady-state rate
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 1000
-        timeFrame: minute
-        geo: configurable
-        domains: []
-        unit: 1
-        price: custom
-        userMultiplied: false
-    elements:
-      - name: Unlimited / Negotiated Volume
-      - name: 24/7 Dedicated Support
-      - name: Contractual SLA
-      - name: Security & Compliance Review
-      - name: Dedicated Account Manager
-      - name: Custom Data Residency
-      - name: Cabela's
+description: >-
+  Cabela's publishes no API and therefore no API plans or pricing. This artifact records
+  that honest zero. It REPLACES a scaffold written by the 2026-05-04 bulk sweep which
+  invented three tiers (Free / Professional / Enterprise) with fabricated quotas, rate
+  limits and TBD prices for an API that does not exist; that scaffold was never harvested
+  from Cabela's and asserted a commercial API programme on the company's behalf.
+plan_count: 0
+plans: []
+plans_note: >-
+  Zero published API plans. Cabela's is a consumer outdoor-goods retailer with no developer
+  programme, no API pricing page and no "contact sales for API access" form — this is not a
+  gated enterprise plan, it is the absence of an API product entirely.
+adjacent_commercial_programs:
+  - name: Cabela's Affiliate Program
+    kind: affiliate
+    confirmed_by_provider: true
+    provider_evidence: https://help.cabelas.com/company-information-ff566349/does-cabelas-offer-an-affiliate-program-f0dc0e62
+    signup_url: https://www.cabelas.com/shop/en/affiliate-program
+    signup_url_status: 403
+    signup_url_note: >-
+      URL is named verbatim by Cabela's own help-centre article; the Akamai edge returned
+      403 to our probe, so the page could not be read and is recorded as unverified rather
+      than dead.
+    note: >-
+      The nearest thing Cabela's operates to a partner data surface. The help centre
+      confirms the programme exists but names no network, no product feed and no API.
+      Third-party affiliate directories report it runs on Impact (Impact Radius) with a
+      product data feed and deep links; that attribution is THIRD-PARTY REPORTED, was not
+      confirmed on any Cabela's surface, and is recorded here as a lead only. Any feed it
+      offers is issued by the affiliate network to approved affiliates, not published by
+      Cabela's as an API.
+  - name: Vendor EDI
+    kind: b2b-edi
+    confirmed_by_provider: false
+    note: >-
+      Cabela's transacts with suppliers over EDI, brokered through SPS Commerce, per SPS
+      Commerce's own partner directory. No Cabela's-published EDI implementation guide,
+      X12 message catalogue or machine-readable contract was found on any Cabela's host,
+      so nothing is registered as a contract and no conformance claim is made.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

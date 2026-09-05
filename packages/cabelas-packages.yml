@@ -1,0 +1,55 @@
+generated: '2026-09-05'
+method: searched
+source: >-
+  npm registry search API (registry.npmjs.org/-/v1/search), PyPI JSON API
+  (pypi.org/pypi/cabelas/json), RubyGems search API, crates.io search API, Packagist
+  search API and the NuGet v3 search service — each queried unauthenticated for "cabelas"
+  on 2026-09-05.
+provider: Cabela's
+providerId: cabelas
+package_count: 0
+packages: []
+packages_note: >-
+  Cabela's publishes no client library in any public package registry, official or
+  otherwise. npm search returns total 0; the PyPI JSON API returns HTTP 404; RubyGems
+  returns an empty array; crates.io returns total 0; NuGet returns totalHits 0; Packagist
+  returns only unrelated packages from authors whose names begin "cabe". There is nothing
+  to mark official:true and no SDK/CLI/SourceCode link in apis.yml to derive a candidate
+  from. No SDKs pointer and no Packages pointer is emitted, because a pointer would assert
+  that the provider ships a library it does not ship.
+registries_checked:
+  - registry: npm
+    query: cabelas
+    results: 0
+  - registry: pypi
+    query: cabelas
+    results: 0
+    note: JSON metadata endpoint returned HTTP 404 — no such project.
+  - registry: rubygems
+    query: cabelas
+    results: 0
+  - registry: crates.io
+    query: cabelas
+    results: 0
+  - registry: nuget
+    query: cabelas
+    results: 0
+  - registry: packagist
+    query: cabelas
+    results: 0
+    note: Matches returned belong to unrelated authors (javier-cabezas, dbseller); none is Cabela's.
+  - registry: maven-central
+    query: cabelas
+    results: 0
+  - registry: pkg.go.dev
+    query: cabelas
+    results: 0
+github:
+  note: >-
+    No Cabela's or Bass Pro Shops GitHub organization could be confirmed. github.com/cabelas
+    and github.com/basspro both resolve to accounts, but neither could be attributed to the
+    company from its own surfaces, and no GitHubOrganization pointer is emitted on an
+    unattributed account.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

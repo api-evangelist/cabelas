@@ -39,7 +39,7 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/cabelas.png
 access: 3rd-Party
 created: '2026-03-23'
-modified: '2026-04-23'
+modified: '2026-09-05'
 position: Consuming
 description: >-
   Cabela's is a specialty retailer of hunting, fishing, camping, and outdoor
@@ -60,7 +60,7 @@ apis:
         type: Website
       - url: https://stores.cabelas.com
         type: Store Locator
-      - url: https://www.cabelas.com/shop/en/customer-service
+      - url: https://help.cabelas.com
         type: Support
     description: >-
       Cabela's offers an online storefront for hunting, fishing, camping,
@@ -69,6 +69,8 @@ apis:
 common:
   - type: DomainSecurity
     url: security/cabelas-domain-security.yml
+  - type: LLMsTxt
+    url: llms/cabelas-llms.txt
   - type: Website
     url: https://www.cabelas.com
   - type: Parent Company
@@ -76,7 +78,7 @@ common:
   - type: Store Locator
     url: https://stores.cabelas.com
   - type: Support
-    url: https://www.cabelas.com/shop/en/customer-service
+    url: https://help.cabelas.com
   - type: PrivacyPolicy
     url: https://www.cabelas.com/shop/en/privacy-policy
   - type: TermsOfService
@@ -85,3 +87,30 @@ maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
 specificationVersion: '0.23'
+x-enrichment:
+  date: '2026-09-05'
+  status: minimal
+  artifacts_added: 3
+  pass: local-v3
+x-coverage:
+  state: none
+  reason: no-developer-program
+  detail: >-
+    Cabela's runs a consumer storefront and a Shelf.io-hosted help centre and nothing
+    developer-facing behind them: api., developer., dev., apis., status. and
+    trust.cabelas.com have no DNS records at all, /openapi.json and every /.well-known/
+    path return genuine app-router 404s on www.cabelas.com, and the provider's own
+    llms.txt on help.cabelas.com indexes roughly 140 published FAQ articles without a
+    single developer, API or integration topic among them.
+  evidence:
+    - url: https://www.cabelas.com/openapi.json
+      status: 404
+    - url: https://www.cabelas.com/.well-known/agent-card.json
+      status: 404
+    - url: https://www.cabelas.com/.well-known/api-catalog
+      status: 404
+    - url: https://help.cabelas.com/llms.txt
+      status: 200
+    - url: https://stores.cabelas.com/openapi.json
+      status: 404
+  checked: '2026-09-05'
