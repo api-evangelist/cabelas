@@ -1,7 +1,9 @@
 ---
 title: Sportsman's Warehouse Acquired by Bass Pro Parent
 url: https://www.mytotalretail.com/article/sportsmans-warehouse-acquired-by-bass-pro-shops-cabelas-parent-company/
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Cabela''s" press release artificial intelligence'
 position: 2
 source: serpapi-google
