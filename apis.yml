@@ -49,6 +49,7 @@ description: >-
   consumer-facing web storefront.
 apis:
   - aid: cabelas:cabelas-website
+    x-published: false
     name: Cabela's
     tags:
       - Retail
